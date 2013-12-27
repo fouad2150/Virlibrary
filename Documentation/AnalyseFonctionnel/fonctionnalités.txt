@@ -1,163 +1,69 @@
-Connexion par facebook
-	recuperer nom/prenom/email/access token /autres permissions
-	recuperer liste envie de lecture
-	recuperer liste de livre deja lus
-	envoyer ces informations a la bases pour etre stocké
-	mettre a jour le champs last_login
-	inserer dans la table activity (id utilisateur/connected_depuis{web,ios,android}/date_connexion)
+Analyse Fonctionnels
 
-Connexion par twitter
-	recuperer nom/prenom/email/access token /autres permissions
-	envoyer ces informations a la bases pour etre stocké
-	mettre a jour le champs last_login
-	inserer dans la table activity (id utilisateur/connected_depuis{web,ios,android}/date_connexion)
+Gestion des comptes utilisateurs	
+--------------------------------
 
-Connexion par amazon
-	recuperer nom/prenom/email/access token /autres permissions
-	recuperer liste envie (liste d'envie de type livre)
-	envoyer ces informations a la bases pour etre stocké
-	mettre a jour le champs last_login
-	inserer dans la table activity (id utilisateur/connected_depuis{web,ios,android}/date_connexion)
-connexion par compte interne
-	recuperer nom/prenom/email
-	mettre a jour le champs last_login
-	inserer dans la table activity (id utilisateur/connected_depuis{web,ios,android}/date_connexion)
+	Se connecter (Via compte virlibrary, facebook, gmail et twiter)		Utilisateur
+	S’inscrire.		Visiteur
+	Modifier, désactiver et configurer un compte utilisateur		Utilisateur
+			
+Gestion des livres
+------------------
 
-Recommender des livres en se basant sur un categorie/theme
-		recuperer le categorie/theme id
-		renvoyer une liste de livre
+	Consulter l’annuaire et les livres de la bibliothèque		Visiteur/Utilisateur
+	Visualiser la fiche  descriptive d’un livre (électronique et non électronique)		Visiteur/Utilisateur
+	Consulter les livres électroniques		Visiteur Utilisateur
+	Ajouter un like pour un livre par un utilisateur		Utilisateur
+	Ajouter une notation  pour un livre par un utilisateur		Utilisateur
+	Taguer un livre par mots clés		Utilisateur
+	Rechercher un livre (Recherche par mot clé et recherche avancée)		Visiteur/Utilisateur
+	Ajouter, modifier  ou supprimer  un livre  		Utilisateur
+	Ajouter, supprimer  un commentaire  sur un livre		Utilisateur
+	Consulter les commentaires sur un livre		Utilisateur
+	Ajouter, supprimer  un résumé  sur un livre		Utilisateur
+	Consulter les résumés sur un livre		Visiteur/Utilisateur
+	Gestion des personnes qui ont (lu, entrain de lire, aimerai lire) un livre		
+			
+Gestion des emprunts	
+--------------------
 
-Recommender des livres en se basant sur un isbn
-		recuperer le isbn
-		renvoyer une liste de livre
+	Emprunter un livre		Utilisateur
+	Annuler la demande d’emprunt		Utilisateur
+	Consulter  la liste des emprunts en cours		Utilisateur
+	Consulter l’historique des emprunts		Utilisateur
+	Enregistrer une transition de livre : Utilisateur
+		- Envoi de  livre
+		- Valider la réception d’un livre
+		- Renvoie de livre
+		- Valider la remise de  livre (avec état du livre) 
+			
+Gestion des prêts
+-----------------
 
+	Consulter la liste des prêts en cours		Utilisateur
+	Consulter l’historique des prêts		Utilisateur
+			
+Système de recommandation
+-------------------------
 
-les types d'updates :
-	*All
-	*livres (nouveau livre publié)
-	*vote (X a voté 5 etoils ce livre ou a donné son avis sur le livre)
-	*status (X a commence a lire le livre Y)
-	*Discussion a propos d'un livre/autheur/
+ 	Suggérer des livres du même auteur		Système
+	Suggérer des livres de la même catégorie		Système
+	Suggérer des livres en se basant sur l’historique de consultation		Système
+	Statistiques d’un livre (nombre d’emprunt)		Système
+	Signaler  les livres les plus critiqués, les plus empruntés, les plus réservés		Système
+	Suggérer les discutions sur un livre, les commentaires, les utilisateurs qui ont lus ce livre		Système
+	Recommander un livre à un ami		Utilisateur
+	Suggérer une liste évènementielle (top 10 livres par année) Meilleurs livres ce mois-ci
+	Livres en évolution (livre qui reçoit un grand nombre d’emprunts depuis une date d’ajout recente) Système
 
+		
+Gestion des notifications
+-------------------------
 
-Mes livres :
-	All
-	Lus
-	Actuellement en lecture
-	A lire
+	Ce cas permet d’envoyer des message ou des notifications à l’utilisateur.		Utilisateur
+	Consulter la liste des messages ou des notifications 		Utilisateur
+			
+l’aide en ligne
+---------------
 
-Mes livres:
-	Lister mes livres
-	acceder a livre dans ma livre
-
-
-Livre:
-	Cover,
-	Titre,
-	isbn,
-	isbn13,
-	asin (Amazon Standard Identification Number)
-	nombre de pages
-	Auteurs (1..n)
-	Moyenne de votes
-	nombre de votes
-	date publication
-	edition
-	Mon vote
-	Etat_lecture(lus/en cours/a lire)
-	Date lecture
-	date d'ajout
-	nombre d'empreint
-	Liste des personnes qui l'ont empreinté
-	date d'achat
-	lieu d'achat
-	etat_livre(nouveau,comme nouveau,tres bien,bien,acceptable,mediocre)
-	format(paperback,hardcover,kindle,ebook,audio book,inconnu)
-
-
-suggestions/recommendations
-
-	lors de la consulation d'un livre
-	*suggestion par genre
-	*suggestion liste de livres (liste de livre qui contiennent ce livre (ex: livre consulté london, la liste sera liste de livre english books (culture,gastronomie...)))
-	*d'autre livre du meme auteur
-	*les lecteurs qui ont lu se livre on lus aussi...
-	*votes/commentaires du livre
-	*quotes du livre
-
-	*statistics du livre (et dans la meme page proposer d'autre statistics d'autre livre a coté)
-		Tous/par edition
-			*statistics de nombre d'emprunt
-			*statistics de nombre de vote
-			*statistics de commentaire
-			*liste d'envie (envie de lire)
-	*statistics utilisateur
-		*nombre de livre lus
-		*nombre de page lues(somme des nombre des pages des livres lus)
-
-	tagger un livre par plusieurs mots clé
-	recommender des livres par tag
-	afficher livres par tags
-	demander une recommendation
-	marquer un livre/auteur/genre comme non interessant
-
-
-
-
-explorer livre :
-par populariter
-genres
-liste de lecture
-Top 10 best sellers
-lectures d'amis
-evenement
-lieu (il semble que vous etes a london voici un liste de livre qui parle de london / liste de livre lus par les locales)
-
-
-
-utilisateur:
-photo,
-rating (il a voté 30 livre , moyenne des votes (4,5))
-nombre de commentaires
-liste de ses livres favories
-recent updates
-Liste des livres lus | en cours de lecture | veut lire
-Liste de citations (et la relier a un livre)
-Liste d'amis
-liste d'auteur favoris
-genres favoris
-classement 1...n a rapport au amis/tous les membres du system
-Liste d'achats
-
-liste de configuration:
-	-vie privé:
-		accees au profil(Tous|membres|amis)
-		messages(juste amis|tous)
-
-
-editer profil
-	nom,prenom, deuxieme prenom
-	photo
-	username
-	sex
-	code postal
-	ville
-	pays
-	pays
-	date de naissance
-	siteweb
-	interest {liste de mots clés(modifier/ajouter/supprimer)}
-	a propos
-	mot de pass ...
-
-
-notifications configuration : recevoir email/notification/rien lorsque:
-						rappel pour rendre un livre {10jours|5jours|1jour}
-						demande d'amis
-						commentaire
-
-Newsletters et autres:
-	email par semaine : livre, liste, ....(abbonements)
-	email sortie/ajout d'un livre
-	email livre disponnible pour emprunt
-	
+	Consulter  le manuel d’utilisation de l’application		Visiteur/Utilisateur"
